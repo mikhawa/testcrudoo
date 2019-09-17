@@ -87,6 +87,26 @@ La base du site sera la même pour tous:
     - "lecteur" avec comme login "lulu" et mot de passe "lulu"
 3. En cas d'erreur un message est affiché et vous n'êtes pas connectés
 4. En cas de connexion réussie vous êtes envoyés vers le contrôleur de de l'admin (adminController.php) ou celui d'un lecteur (publicController.php)
-5. Un bouton de déconnexion doit apparaître et permettre la déconnexion réelle de l'utilisateur
+5. Un bouton de déconnexion doit apparaître et permettre la déconnexion réelle des utilisateurs: ![deconnect](https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-crudoo_8080-2019.09.17-13_50_56.png "déconnexion")
 
-![deconnect](https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-crudoo_8080-2019.09.17-13_50_56.png "déconnexion")
+### Consignes de fonctionnalitées individuelles
+
+1. Si vous êtes connecté en tant que "lecteur", vous devez afficher:
+    - Sur toutes les pages:
+        - Dans le menu du haut, un retour à l'accueil et les catégories cliquables vers les entrées de la table {votre_prénom}categ par exemple:
+![menu](https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-crudoo_8080-2019.09.17-14_02_20.png "menu")
+
+    - Sur l'accueil:
+        - Un message disant "Pas encore d'article sur notre site" si pas d'articles ou
+        - Une liste de tous vos articles triés par date descendante (table {votre_prénom}article) se trouvant dans n'importe quelle rubrique, même si l'article n'est pas dans une rubrique, avec:
+            1. Le titre
+            2. La liste des catégories de l'article cliquables (ou pas si l'article n'a pas de catégorie)
+            3. Un résumé de l'article de 250 caractères avec "Lire la suite" cliquable vers le détail de l'article, si possible sans césure au millieu d'un mot
+            4. La date de la création de l'article au format DATETIME: 
+![extraitarticle](https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-basiccrud_8080-2019.09.17-14_39_59.png "extrait article")
+    - Sur la page d'un catégorie:
+        - Le titre de la catégorie et la description de celle-ci
+        - Une liste de tous vos articles (table {votre_prénom}article) se trouvant dans la catégorie, même si l'article n'est pas dans une rubrique, avec:
+            1. Le titre
+            2. Le texte complet de l'article avec des retours automatiques à la ligne
+            4. La date de la création de l'article au format DATETIME:
