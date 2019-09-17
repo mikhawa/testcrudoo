@@ -53,3 +53,26 @@ Dossier où vous créerez vous modèles.
 - Le dossier /public permettant l'affichage du site aux "lecteur"
 - Le dossier /admin permettant l'affichage du site aux "admin", avec des possibilitées étendues CRUD
 
+### Consignes techniques communes
+Ce test ressemblera fortement à l'exercice que vous avez eu fin juin, avec quelques changements structurels importants:
+
+https://github.com/WebDevCF2019/CrudOO
+
+Une vue de la nouvelle DB ce trouve à cette adresse:
+
+https://github.com/mikhawa/testcrudoo/blob/master/DB/vue-globale.png
+
+#### Dans /model
+1. Vous devez avoir au minimum 2 mappings des tables venant de la base de données:
+    - theuser.php
+    - theroles.php
+
+    Il vous faut pour TOUS vos mapping les attributs, le constructeur, les getters et setters et l'hydratation !
+    Les setters doivent sécuriser les champs pour éviter les attaques de la DB !
+    
+2. Vous devez avoir au minimum 2 managers de ces classes:
+    - theuserManager.php
+    - therolesManager.php
+
+    Une connexion PDO doit être passée en argument aux managers !
+    Vous devez créer au minimum les méthodes "connectTheuser(theuser $var)" et "disconnectTheuser()" dans "theuserManager.php" pour permettre aux utilisateur enregistrés de se connecter et se déconnecter. 
