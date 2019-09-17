@@ -97,7 +97,7 @@ La base du site sera la même pour tous:
 ![menu](https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-crudoo_8080-2019.09.17-14_02_20.png "menu")
 
     - Sur l'accueil:
-        - Un message disant "Pas encore d'article sur notre site" si pas d'articles ou
+        - Un message disant "Pas encore d'article sur notre site" si pas d'articles OU
         - Une liste de tous vos articles triés par date descendante (table {votre_prénom}article) se trouvant dans n'importe quelle rubrique, même si l'article n'est pas dans une rubrique, avec:
             1. Le titre
             2. La liste des catégories de l'article cliquables (ou pas si l'article n'a pas de catégorie)
@@ -106,7 +106,16 @@ La base du site sera la même pour tous:
 ![extraitarticle](https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-basiccrud_8080-2019.09.17-14_39_59.png "extrait article")
     - Sur la page d'un catégorie:
         - Le titre de la catégorie et la description de celle-ci
-        - Une liste de tous vos articles (table {votre_prénom}article) se trouvant dans la catégorie, même si l'article n'est pas dans une rubrique, avec:
+        - Un message disant "Pas encore d'article sur cette rubrique" si pas d'articles OU
+        - Une liste de tous vos articles (table {votre_prénom}article) se trouvant dans la catégorie:
             1. Le titre
-            2. Le texte complet de l'article avec des retours automatiques à la ligne
+            2. Un résumé de l'article de 350 caractères avec "Lire la suite" cliquable vers le détail de l'article, si possible sans césure au millieu d'un mot
+            3. La date de la création de l'article au format DATETIME
+    - Sur la page de détail d'un article:
+        - Un message disant "Cette article n'existe plus" si l'article n'est pas existant OU
+            1. Le titre
+            2. La liste des catégories de l'article cliquables (ou pas si l'article n'a pas de catégorie)
+            3. Le texte complet de l'article avec des retours automatiques à la ligne
             4. La date de la création de l'article au format DATETIME:
+
+1. Si vous êtes connecté en tant que "admin", vous devez afficher:
