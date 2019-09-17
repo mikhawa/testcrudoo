@@ -44,7 +44,7 @@
     Où les utilisateurs connectés en tant que "admin" arrivent
 
 #### /model
-Dossier où vous créerez vous modèles.
+Dossier où vous créerez vous modèles
 
 
 #### /view
@@ -60,7 +60,7 @@ https://github.com/WebDevCF2019/CrudOO
 
 Une vue de la nouvelle DB ce trouve à cette adresse:
 
-https://github.com/mikhawa/testcrudoo/blob/master/DB/vue-globale.png
+https://dessycf2m.phpnet.org/images-utiles/crudoo/vue-globale.png
 
 #### Dans /model
 1. Vous devez avoir au minimum 2 mappings des tables venant de la base de données:
@@ -75,4 +75,17 @@ https://github.com/mikhawa/testcrudoo/blob/master/DB/vue-globale.png
     - therolesManager.php
 
     Une connexion PDO doit être passée en argument aux managers !
-    Vous devez créer au minimum les méthodes "connectTheuser(theuser $var)" et "disconnectTheuser()" dans "theuserManager.php" pour permettre aux utilisateur enregistrés de se connecter et se déconnecter. 
+    Vous devez créer au minimum les méthodes "connectTheuser(theuser $var)" et "disconnectTheuser()" dans "theuserManager.php" pour permettre aux utilisateur enregistrés de se connecter et se déconnecter
+
+### Consignes de fonctionnalitées communes
+
+La base du site sera la même pour tous:
+
+1. Lorsque vous arrivez sur le site, vous vous trouvez devant un formulaire de connexion
+2. Vous pouvez vous connecter en tant que
+    - "admin" avec comme login "admin" et mot de passe "admin"
+    - "lecteur" avec comme login "lulu" et mot de passe "lulu"
+3. En cas d'erreur un message est affiché et vous n'êtes pas connectés
+4. En cas de connexion réussie vous êtes envoyés vers le contrôleur de de l'admin (adminController.php) ou celui d'un lecteur (publicController.php)
+5. Un bouton de déconnexion doit apparaître et permettre la déconnexion réelle de l'utilisateur
+(https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-crudoo_8080-2019.09.17-13_50_56.png)
