@@ -88,4 +88,5 @@ La base du site sera la même pour tous:
 3. En cas d'erreur un message est affiché et vous n'êtes pas connectés
 4. En cas de connexion réussie vous êtes envoyés vers le contrôleur de de l'admin (adminController.php) ou celui d'un lecteur (publicController.php)
 5. Un bouton de déconnexion doit apparaître et permettre la déconnexion réelle de l'utilisateur
-(https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-crudoo_8080-2019.09.17-13_50_56.png)
+
+![deconnect](https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-crudoo_8080-2019.09.17-13_50_56.png "déconnexion")
