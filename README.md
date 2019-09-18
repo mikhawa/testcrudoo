@@ -135,7 +135,7 @@ La base du site sera la même pour tous:
 ![modsup](https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-crudoo_8080-2019.09.18-11_10_47.png "modsup")
     - Sur la page d'ajout d'un article:
         - Le formulaire pour envoyer en POST le nouvel article
-        - Le champs nécessaires pour insérer l'article (les noms exactes sont dans votre table {votre_prénom}article )
+        - Le champ nécessaire pour insérer l'article (les noms exacts sont dans votre table {votre_prénom}article )
         - Les checkbox affichant toutes les rubriques, permettant d'insérer l'article dans aucune, toutes ou certaines rubriques, voir votre table {votre_prénom}categ et la table de jointure many to many, utilisez {votre_prénom}categ pour récupérer ces rubriques
          - Si l'article est bien inséré, faites une redirection sur l'accueil de l'admin, sinon affichez l'erreur
 
@@ -143,7 +143,7 @@ La base du site sera la même pour tous:
 
     - Sur la page modifier un article:
         - Le formulaire pour envoyer en POST l'article modifié
-        - Le champs nécessaires pour réinsérer l'article (les noms exactes sont dans votre table {votre_prénom}article ), déjà remplis avec le contenu
+        - Le champ nécessaire pour réinsérer l'article (les noms exacts sont dans votre table {votre_prénom}article ), déjà remplis avec le contenu
         - Les checkbox affichant toutes les rubriques (celles déjà choisies doivent être cochées) permettant d'insérer l'article dans aucune, toutes ou certaines rubriques, voir votre table {votre_prénom}categ et la table de jointure many to many,, utilisez {votre_prénom}categ pour récupérer ces rubriques. Attention n'oubliez pas de vider la table many to many et d'y réinsérer les entrées à chaque update !
          - Si l'article est bien modifié, faites une redirection sur l'accueil de l'admin, sinon affichez l'erreur 
 
