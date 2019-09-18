@@ -58,6 +58,10 @@ Ce test ressemblera fortement à l'exercice que vous avez eu fin juin, avec quel
 
 https://github.com/WebDevCF2019/CrudOO
 
+ainsi que l'exercice précédent (plus proche pour la gestion des rubriques many to many)
+
+https://github.com/WebDevCF2019/basicCrud
+
 Une vue de la nouvelle DB se trouve à cette adresse:
 
 https://dessycf2m.phpnet.org/images-utiles/crudoo/vue-globale.png
@@ -143,8 +147,9 @@ La base du site sera la même pour tous:
         - Les checkbox affichant toutes les rubriques (celles déjà choisies doivent être cochées) permettant d'insérer l'article dans aucune, toutes ou certaines rubriques, voir votre table {votre_prénom}categ et la table de jointure many to many,, utilisez {votre_prénom}categ pour récupérer ces rubriques. Attention n'oubliez pas de vider la table many to many et d'y réinsérer les entrées à chaque update !
          - Si l'article est bien modifié, faites une redirection sur l'accueil de l'admin, sinon affichez l'erreur 
 
-       ! ATTENTION utilisez bien les setters et getters de votre table {votre_prénom}article pour éviter toute attaque, puis {votre_prénom}articleManager pour effectuer réellement l'insertion !
-
+       ! ATTENTION utilisez bien les setters et getters de votre table {votre_prénom}article pour éviter toute attaque, puis {votre_prénom}articleManager pour effectuer réellement la modification !
+   
+    - 
 
 
 
