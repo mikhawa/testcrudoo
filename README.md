@@ -154,6 +154,6 @@ La base du site sera la même pour tous:
         - En cas de confirmation positive, supprimez l'article de la DB et retournez sur l'accueil
         - dans le cas contraire retour à l'accueil
 
-
+### Bon boulot à tous 
 
         
