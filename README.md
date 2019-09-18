@@ -141,7 +141,7 @@ La base du site sera la même pour tous:
 
        ! ATTENTION utilisez bien les setters et getters de votre table {votre_prénom}article pour éviter toute attaque, puis {votre_prénom}articleManager pour effectuer réellement l'insertion !
 
-    - Sur la page modifier un article
+    - Sur la page modifier un article:
         - Le formulaire pour envoyer en POST l'article modifié
         - Le champs nécessaires pour réinsérer l'article (les noms exactes sont dans votre table {votre_prénom}article ), déjà remplis avec le contenu
         - Les checkbox affichant toutes les rubriques (celles déjà choisies doivent être cochées) permettant d'insérer l'article dans aucune, toutes ou certaines rubriques, voir votre table {votre_prénom}categ et la table de jointure many to many,, utilisez {votre_prénom}categ pour récupérer ces rubriques. Attention n'oubliez pas de vider la table many to many et d'y réinsérer les entrées à chaque update !
@@ -149,7 +149,10 @@ La base du site sera la même pour tous:
 
        ! ATTENTION utilisez bien les setters et getters de votre table {votre_prénom}article pour éviter toute attaque, puis {votre_prénom}articleManager pour effectuer réellement la modification !
    
-    - 
+    - Lors du clic sur "supprimer":
+        - Ouvrez un popup de confirmation ou une page de confirmation
+        - En cas de confirmation positive, supprimez l'article de la DB et retournez sur l'accueil
+        - dans le cas contraire retour à l'accueil
 
 
 
