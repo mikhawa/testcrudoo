@@ -128,6 +128,7 @@ La base du site sera la même pour tous:
             1. Uniquement le titre
             2. Un lien "modifier"
             3. Un lien "supprimer"
+
 ![modsup](https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-crudoo_8080-2019.09.18-11_10_47.png "modsup")
     - Sur la page d'ajout d'un article:
         - Le formulaire pour envoyer en POST le nouvel article
