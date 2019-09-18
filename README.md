@@ -123,4 +123,16 @@ La base du site sera la même pour tous:
         - Dans le menu du haut, un retour à l'accueil et "ajouter un article"
     - Sur la page d'accueil:
         - Le titre "Administration des articles de TestCrudOO"
+        - "Pas encore d'article" affiché si il n'y a pas d'articles ou
+        - Une liste de tous vos articles (de vos tables personnelles uniquement) triés par date descendante (table {votre_prénom}article) se trouvant dans n'importe quelle rubrique, même si l'article n'est pas dans une rubrique, avec:
+            1. Uniquement le titre
+            2. Un lien "modifier"
+            3. Un lien "supprimer"
+![modsup](https://dessycf2m.phpnet.org/images-utiles/crudoo/screenshot-crudoo_8080-2019.09.18-11_10_47.png "modsup")
+    - Sur la page d'ajout d'un article:
+        1. le formulaire pour envoyer en POST le nouvel article
+        2. Le champs nécessaires pour insérer l'article (les noms exactes sont dans votre table {votre_prénom}article 
+        3. Les checkbox permettant d'insérer l'article dans aucune, toutes ou certaines rubriques, voir votre table {votre_prénom}categ et la table de jointure many to many
+        4. Si l'article est bien insérer, faites une redirection sur l'accueil de l'admin, sinon affichez l'erreur
+        ATTENTION utilisez bien les setters et getters de votre table {votre_prénom}article pour éviter toute attaque, puis {votre_prénom}articleManager pour effectuer réellement l'insertion !
         
