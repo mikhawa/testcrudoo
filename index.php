@@ -38,6 +38,9 @@ try {
             DB_LOGIN,
             DB_PWD,
     );
+    // affichage des erreurs pour le debugage
+    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
 } catch (PDOException $e) {
     echo $e->getMessage();
     die();
