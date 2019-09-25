@@ -7,7 +7,7 @@ if(isset($_POST['theuserlogin'])){
     $theuserInstance = new theuser($_POST);
     
     // on va réellement vérifier la connexion dans le manager de theuser: theuserManager appelé depuis l'index.php
-    
+    $identify = $theuserM->connectTheuser($theuserInstance);
     
     
     /*

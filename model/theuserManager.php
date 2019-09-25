@@ -13,4 +13,8 @@ class theuserManager {
         public function __construct(PDO $v) {
             $this->db = $v;
         }
+        
+    public function connectTheuser(theuser $var) {
+        var_dump($var);
+    }   
 }
