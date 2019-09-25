@@ -1,13 +1,23 @@
 <?php
 
-// si on a envoyé le formulaire
+// si on a envoyé le formulaire de connexion
 if(isset($_POST['theuserlogin'])){
   
-    // création d'une instance de type theuser
+    // création d'une instance de type theuser afin d'utiliser les setters pour protéger le formulaire de toute attaque
     $theuserInstance = new theuser($_POST);
-    echo "<hr>";
+    
+    // on va réellement vérifier la connexion dans le manager de theuser: theuserManager
+    
+    
+    
+    /*
+     * pour tester l'envoi du $_POST et la création de l'instance de l'objet theuser
+     * 
+    echo "<pre>";
     var_dump($_POST,$theuserInstance);
-    echo "</hr>";
+    echo "</pre>";
+     * 
+     */
     
     
 // sinon accueil de la connexion    
