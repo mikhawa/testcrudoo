@@ -46,6 +46,13 @@ try {
     die();
 }
 
+
+// Appel des Managers
+$theuserM = new theuserManager($connexion);
+
+
+
+
 // we're connected with Admin
 
 if (isset($_SESSION['myKey']) && $_SESSION['myKey'] == session_id() && $_SESSION['therolesname'] == "admin") {
