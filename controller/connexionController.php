@@ -9,6 +9,14 @@ if(isset($_POST['theuserlogin'])){
     // on va réellement vérifier la connexion dans le manager de theuser: theuserManager appelé depuis l'index.php
     $identify = $theuserM->connectTheuser($theuserInstance);
     
+    // connexion ok
+    if($identify){
+        header("Location: ./");
+    }else{
+        // erreur de connexion, affichage du formulaire + erreur
+        $error = "Login ou mot de passe non valide";
+        echo $twig->render("connexion/connexion.html.twig",['erreur'=>$error]);
+    }
     
     /*
      * pour tester l'envoi du $_POST et la création de l'instance de l'objet theuser
