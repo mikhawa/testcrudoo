@@ -1,34 +1,25 @@
 <?php
 
 // si on a envoyé le formulaire de connexion
-if(isset($_POST['theuserlogin'])){
-  
+if (isset($_POST['theuserlogin'])) {
+
     // création d'une instance de type theuser afin d'utiliser les setters pour protéger le formulaire de toute attaque
     $theuserInstance = new theuser($_POST);
-    
+
     // on va réellement vérifier la connexion dans le manager de theuser: theuserManager appelé depuis l'index.php
     $identify = $theuserM->connectTheuser($theuserInstance);
-    
+
     // connexion ok
-    if($identify){
+    if ($identify) {
         header("Location: ./");
-    }else{
+    } else {
         // erreur de connexion, affichage du formulaire + erreur
         $error = "Login ou mot de passe non valide";
-        echo $twig->render("connexion/connexion.html.twig",['erreur'=>$error]);
+        echo $twig->render("connexion/connexion.html.twig", ['erreur' => $error]);
     }
-    
-    /*
-     * pour tester l'envoi du $_POST et la création de l'instance de l'objet theuser
-     * 
-    echo "<pre>";
-    var_dump($_POST,$theuserInstance);
-    echo "</pre>";
-     * 
-     */
-    
-    
+
+
 // sinon accueil de la connexion    
-}else{
+} else {
     echo $twig->render("connexion/connexion.html.twig");
 }
