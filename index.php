@@ -50,7 +50,7 @@ try {
 // Appel des Managers
 $theuserM = new theuserManager($connexion); 
 $jilliancategM = new jilliancategManager($connexion);
-
+$jillianarticleM = new jillianarticleManager($connexion);
 
 
 
