@@ -1,4 +1,11 @@
 <?php
+
+// on récupère toutes les catégories pour le menu
+$menu = $jilliancategM->selectAllJilliancateg();
+
+var_dump($menu);
+
+
 /*
  * on veut se déconnecter
  */
