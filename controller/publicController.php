@@ -3,7 +3,7 @@
 // on récupère toutes les catégories pour le menu
 $menu = $jilliancategM->selectAllJilliancateg();
 
-var_dump($menu);
+// var_dump($menu);
 
 
 /*
@@ -18,6 +18,6 @@ if(isset($_GET['disconnect'])){
  */ 
 }else{
     
-    echo $twig->render("public/accueilPublic.html.twig");
+    echo $twig->render("public/accueilPublic.html.twig",["afficheMenu"=>$menu]);
 
 }
