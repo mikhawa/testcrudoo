@@ -33,8 +33,22 @@ class jilliancategManager {
     }
     
     // afficher une catégorie via son id
-    public function selectJilliancategById(int $id){
+    public function selectJilliancategById(int $id):array{
+        $sql = "SELECT * FROM jilliancateg WHERE idjilliancateg = ?";
+        $recup = $this->db->prepare($sql);
+        $recup->bindValue(1, $id, PDO::PARAM_INT);
         
+        try{
+            $recup->execute();
+            if($recup->rowCount()){
+                return $recup->fetch(PDO::FETCH_ASSOC);
+            }else{
+                return [];
+            }
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+            return [];
+        }
     }
 
 }

@@ -19,8 +19,23 @@ if(isset($_GET['disconnect'])){
  */
 }elseif(isset($_GET['idcateg'])&& ctype_digit($_GET['idcateg'])){
     
-    // appel du détail d'une rubrique grace à son id
+    // appel du détail d'une rubrique grâce à son id
+    $content = $jilliancategM->selectJilliancategById($_GET['idcateg']);
     
+    // pas de résultat (tableau vide)
+    if(empty($content)){
+        $erreur = "Cette rubrique n'existe plus";
+    }else{
+        $erreur ="";
+    }
+    
+    //var_dump($content,$erreur);
+    // appel de la vue
+    echo $twig->render("public/categPublic.html.twig",
+            ["afficheMenu"=>$menu,
+             "contenu"=>$content,
+             "error"=>$erreur]
+            );
     
 /*
  * Accueil de l'utilisateur
