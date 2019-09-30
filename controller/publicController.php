@@ -12,6 +12,15 @@ $menu = $jilliancategM->selectAllJilliancateg();
 if(isset($_GET['disconnect'])){
     
     $theuserM->disconnectTheuser();
+   
+    
+/*
+ * si on a cliqué sur une catégorie    
+ */
+}elseif(isset($_GET['idcateg'])&& ctype_digit($_GET['idcateg'])){
+    
+    // appel du détail d'une rubrique grace à son id
+    
     
 /*
  * Accueil de l'utilisateur

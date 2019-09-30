@@ -31,5 +31,10 @@ class jilliancategManager {
         }
         
     }
+    
+    // afficher une catégorie via son id
+    public function selectJilliancategById(int $id){
+        
+    }
 
 }
