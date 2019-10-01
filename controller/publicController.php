@@ -42,6 +42,8 @@ if(isset($_GET['disconnect'])){
  */ 
 }else{
     
+    // Appel de tous les articles du site
+    
     echo $twig->render("public/accueilPublic.html.twig",["afficheMenu"=>$menu]);
 
 }
