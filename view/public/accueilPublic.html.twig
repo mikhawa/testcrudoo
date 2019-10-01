@@ -15,7 +15,11 @@
                 <p class="lead">Affichage de tous vos articles et leurs catégories</p>
             </div>
             <div class="col-lg-6 text-left">
+               {% for item in afficheArticles %}
                
+               {% else %}
+               <h3>Pas encore d'articles</h3>
+               {% endfor %}
             </div>
         </div>
 </main>

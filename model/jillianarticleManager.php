@@ -21,7 +21,7 @@ class jillianarticleManager {
                     FROM jillianarticle a
                         LEFT JOIN jilliancateg_has_jillianarticle h
                         ON a.idjillianarticle = h.jillianarticle_idjillianarticle
-                        LEFT jilliancateg c
+                        LEFT JOIN jilliancateg c
                         ON c.idjilliancateg = h.jilliancateg_idjilliancateg
                     ORDER BY a.jillianarticletemps DESC;    
             ";

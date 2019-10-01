@@ -43,7 +43,8 @@ if(isset($_GET['disconnect'])){
 }else{
     
     // Appel de tous les articles du site
+    $recuparticle = $jillianarticleM->selectAlljillianarticle();
     
-    echo $twig->render("public/accueilPublic.html.twig",["afficheMenu"=>$menu]);
+    echo $twig->render("public/accueilPublic.html.twig",["afficheMenu"=>$menu,"afficheArticles"]);
 
 }
