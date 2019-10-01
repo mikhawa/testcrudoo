@@ -29,12 +29,18 @@ if(isset($_GET['disconnect'])){
         $erreur ="";
     }
     
-    //var_dump($content,$erreur);
+    // Appel de tous les articles de la rubrique
+    $recuparticle = $jillianarticleM->selectAlljillianarticleByCateg($_GET['idcateg']);
+    
+    // débogage de l'article
+    var_dump($recuparticle);
+    
     // appel de la vue
     echo $twig->render("public/categPublic.html.twig",
             ["afficheMenu"=>$menu,
              "contenu"=>$content,
-             "error"=>$erreur]
+             "error"=>$erreur,
+             "afficheArticles"=>$recuparticle]
             );
     
 /*
