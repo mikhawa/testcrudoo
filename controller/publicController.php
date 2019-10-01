@@ -12,7 +12,21 @@ $menu = $jilliancategM->selectAllJilliancateg();
 if(isset($_GET['disconnect'])){
     
     $theuserM->disconnectTheuser();
-   
+    
+    
+    
+/*
+ * si on a cliqué sur le détail d'un article
+ */   
+}elseif(isset($_GET['idarticle'])&& ctype_digit($_GET['idarticle'])){   
+    
+    // récupération de l'article
+    $recuparticle = $jillianarticleM->selectjillianarticleById($_GET['idarticle']);
+    
+    // passage de l'article (et du menu) à la vue
+    echo $twig->render("public/articlePublic.html.twig",["afficheMenu"=>$menu,"afficheArticles"=>$recuparticle]);
+    
+    
     
 /*
  * si on a cliqué sur une catégorie    
@@ -29,12 +43,18 @@ if(isset($_GET['disconnect'])){
         $erreur ="";
     }
     
-    //var_dump($content,$erreur);
+    // Appel de tous les articles de la rubrique
+    $recuparticle = $jillianarticleM->selectAlljillianarticleByCateg($_GET['idcateg']);
+    
+    // débogage de l'article
+    // var_dump($recuparticle);
+    
     // appel de la vue
     echo $twig->render("public/categPublic.html.twig",
             ["afficheMenu"=>$menu,
              "contenu"=>$content,
-             "error"=>$erreur]
+             "error"=>$erreur,
+             "afficheArticles"=>$recuparticle]
             );
     
 /*

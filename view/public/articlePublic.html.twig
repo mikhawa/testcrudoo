@@ -1,6 +1,6 @@
 {% extends "template1.html.twig" %}
 
-{% block title %}{{ parent() }} | Accueil{% endblock %}
+{% block title %}{{ parent() }} | {{ afficheArticles.jillianarticletitre }}{% endblock %}
 
 {% block menuhaut %}
 {% include "public/menuHautPublic.html.twig" %}
@@ -11,19 +11,19 @@
 <main role="main" class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1 class="mt-5">Accueil </h1>
-                <p class="lead">Affichage de tous vos articles et leurs catégories</p>
+                <h1 class="mt-5">Article :   {{ afficheArticles.jillianarticletitre }}</h1>
+                <p class="lead">Affichage de l'article et ses catégories</p>
             </div>
             <div class="col-lg-10 text-left">
-               {% for item in afficheArticles %}
-                   <h3>{{ item.jillianarticletitre }}</h3>
+               {% if afficheArticles is not empty %}
+                   <h3>{{ afficheArticles.jillianarticletitre }}</h3>
                    
                    {# si on a une catégorie #}
-                   {% if item.idjilliancateg is not empty %}
+                   {% if afficheArticles.idjilliancateg is not empty %}
                    
                    {# création de tableaux via la commande split #}    
-                   {% set idcategtab = item.idjilliancateg|split(',') %}    
-                   {% set nomcategtab = item.jilliancategnom|split('|||') %}    
+                   {% set idcategtab = afficheArticles.idjilliancateg|split(',') %}    
+                   {% set nomcategtab = afficheArticles.jilliancategnom|split('|||') %}    
                        <h5>Rubriques : 
                            {% for id in idcategtab %}
    <a href ="?idcateg={{ id }}">{{ nomcategtab[loop.index0] }}</a>  
@@ -32,11 +32,12 @@
                            {% endfor %}
                            </h5>
                    {% endif %}
-                   <p>{{ item.jillianarticletxt|truncate(250, true) }} <a href='?idarticle={{ item.idjillianarticle }}'>Lire la suite</a></p>
-                   <p>Date: {{ item.jillianarticletemps }}</p><hr>
+                   <p>{{ afficheArticles.jillianarticletxt|nl2br }} </p>
+                   <p>Date: {{ afficheArticles.jillianarticletemps }}</p><hr>
                {% else %}
                <h3>Pas encore d'articles</h3>
-               {% endfor %}
+               {% endif %}
+                   
             </div>
         </div>
 </main>
