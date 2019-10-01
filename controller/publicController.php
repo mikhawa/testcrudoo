@@ -33,7 +33,7 @@ if(isset($_GET['disconnect'])){
     $recuparticle = $jillianarticleM->selectAlljillianarticleByCateg($_GET['idcateg']);
     
     // débogage de l'article
-    var_dump($recuparticle);
+    // var_dump($recuparticle);
     
     // appel de la vue
     echo $twig->render("public/categPublic.html.twig",

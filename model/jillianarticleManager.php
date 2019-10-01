@@ -49,7 +49,7 @@ class jillianarticleManager {
      * la catégorie dont l'id est passée en paramètre
      */
     public function selectAlljillianarticleByCateg(int $idcateg){
-        $sql = "SELECT a.idjillianarticle, a.jillianarticletitre, LEFT(a.jillianarticletxt,350) AS jillianarticletxt, a.jillianarticletemps
+        $sql = "SELECT a.idjillianarticle, a.jillianarticletitre, LEFT(a.jillianarticletxt,380) AS jillianarticletxt, a.jillianarticletemps
                     FROM jillianarticle a
                         LEFT JOIN jilliancateg_has_jillianarticle h
                         ON a.idjillianarticle = h.jillianarticle_idjillianarticle
