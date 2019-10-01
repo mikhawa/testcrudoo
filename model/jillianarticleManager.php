@@ -17,12 +17,13 @@ class jillianarticleManager {
      * On sélectionne tous les articles par date desc avec les catégories si il y en a.
      */
     public function selectAlljillianarticle() {
-        $sql = "SELECT a.*, c.*
+        $sql = "SELECT a.*, GROUP_CONCAT(c.idjilliancateg) AS idjilliancateg, GROUP_CONCAT(c.jilliancategnom SEPARATOR '|||') AS jilliancategnom
                     FROM jillianarticle a
                         LEFT JOIN jilliancateg_has_jillianarticle h
                         ON a.idjillianarticle = h.jillianarticle_idjillianarticle
                         LEFT JOIN jilliancateg c
                         ON c.idjilliancateg = h.jilliancateg_idjilliancateg
+                        GROUP BY a.idjillianarticle
                     ORDER BY a.jillianarticletemps DESC;    
             ";
         try{
