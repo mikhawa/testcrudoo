@@ -16,7 +16,13 @@
             </div>
             <div class="col-lg-6 text-left">
                {% for item in afficheArticles %}
-               
+                   <h3>{{ item.jillianarticletitre }}</h3>
+                   {# si on a une catégorie #}
+                   {% if item.idjilliancateg is not empty %}
+                      blablabla
+                   {% endif %}
+                   <p>{{ item.jillianarticletxt }} ... <a href='?idarticle={{ item.idjillianarticle }}'>Lire la suite</a></p>
+                   <p>Date: {{ item.jillianarticletemps }}</p>
                {% else %}
                <h3>Pas encore d'articles</h3>
                {% endfor %}

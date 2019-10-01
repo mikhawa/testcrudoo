@@ -29,7 +29,7 @@ class jillianarticleManager {
             $recup = $this->db->query($sql);
             
             // si pas de résultats
-            if($recup->rowCount()===0){
+            if($recup->rowCount()==0){
                 return [];
             }
             
