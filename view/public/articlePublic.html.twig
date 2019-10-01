@@ -1,0 +1,49 @@
+{% extends "template1.html.twig" %}
+
+{% block title %}{{ parent() }} | {{ afficheArticles.jillianarticletitre }}{% endblock %}
+
+{% block menuhaut %}
+{% include "public/menuHautPublic.html.twig" %}
+{% endblock %}
+
+{% block milieu %}
+    <!-- Page Content -->
+<main role="main" class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="mt-5">Article :   {{ afficheArticles.jillianarticletitre }}</h1>
+                <p class="lead">Affichage de l'article et ses catégories</p>
+            </div>
+            <div class="col-lg-10 text-left">
+               {% if afficheArticles is not empty %}
+                   <h3>{{ afficheArticles.jillianarticletitre }}</h3>
+                   
+                   {# si on a une catégorie #}
+                   {% if afficheArticles.idjilliancateg is not empty %}
+                   
+                   {# création de tableaux via la commande split #}    
+                   {% set idcategtab = afficheArticles.idjilliancateg|split(',') %}    
+                   {% set nomcategtab = afficheArticles.jilliancategnom|split('|||') %}    
+                       <h5>Rubriques : 
+                           {% for id in idcategtab %}
+   <a href ="?idcateg={{ id }}">{{ nomcategtab[loop.index0] }}</a>  
+    {% if not loop.last %} |
+        {% endif %}
+                           {% endfor %}
+                           </h5>
+                   {% endif %}
+                   <p>{{ afficheArticles.jillianarticletxt|nl2br }} </p>
+                   <p>Date: {{ afficheArticles.jillianarticletemps }}</p><hr>
+               {% else %}
+               <h3>Pas encore d'articles</h3>
+               {% endif %}
+                   
+            </div>
+        </div>
+</main>
+
+{% endblock %}
+
+{% block bas %}
+{% include "footer.html.twig" %}
+{% endblock %}

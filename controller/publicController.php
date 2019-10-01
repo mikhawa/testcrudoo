@@ -12,7 +12,21 @@ $menu = $jilliancategM->selectAllJilliancateg();
 if(isset($_GET['disconnect'])){
     
     $theuserM->disconnectTheuser();
-   
+    
+    
+    
+/*
+ * si on a cliqué sur le détail d'un article
+ */   
+}elseif(isset($_GET['idarticle'])&& ctype_digit($_GET['idarticle'])){   
+    
+    // récupération de l'article
+    $recuparticle = $jillianarticleM->selectjillianarticleById($_GET['idarticle']);
+    
+    // passage de l'article (et du menu) à la vue
+    echo $twig->render("public/articlePublic.html.twig",["afficheMenu"=>$menu,"afficheArticles"=>$recuparticle]);
+    
+    
     
 /*
  * si on a cliqué sur une catégorie    
