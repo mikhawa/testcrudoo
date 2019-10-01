@@ -26,7 +26,7 @@
                    {% set nomcategtab = item.jilliancategnom|split('|||') %}    
                        <h5>Rubriques : 
                            {% for id in idcategtab %}
-   <a href ="?idcateg={{ idcategtab[loop.index0] }}">{{ nomcategtab[loop.index0] }}</a>  
+   <a href ="?idcateg={{ id }}">{{ nomcategtab[loop.index0] }}</a>  
     {% if not loop.last %} |
         {% endif %}
                            {% endfor %}
