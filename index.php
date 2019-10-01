@@ -38,10 +38,21 @@ try {
             DB_LOGIN,
             DB_PWD,
     );
+    // affichage des erreurs pour le debugage
+    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
 } catch (PDOException $e) {
     echo $e->getMessage();
     die();
 }
+
+
+// Appel des Managers
+$theuserM = new theuserManager($connexion); 
+$jilliancategM = new jilliancategManager($connexion);
+$jillianarticleM = new jillianarticleManager($connexion);
+
+
 
 // we're connected with Admin
 

@@ -1,0 +1,30 @@
+{% extends "template1.html.twig" %}
+
+{% block title %}{{ parent() }} | Rubrique : {{ contenu.jilliancategnom }}{% endblock %}
+
+{% block menuhaut %}
+{% include "public/menuHautPublic.html.twig" %}
+{% endblock %}
+
+{% block milieu %}
+    <!-- Page Content -->
+<main role="main" class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="mt-5">Rubrique : {{ contenu.jilliancategnom }} </h1>
+                <h5>{{ contenu.jilliancategtexte}}</h5>
+                <p class="lead">Affichage de tous vos articles dans cette catégorie:</p>
+                <p></p>
+                <h3>{{ error }}</h3>
+            </div>
+            <div class="col-lg-6 text-left">
+               
+            </div>
+        </div>
+</main>
+
+{% endblock %}
+
+{% block bas %}
+{% include "footer.html.twig" %}
+{% endblock %}

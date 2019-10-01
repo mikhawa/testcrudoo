@@ -15,7 +15,28 @@
                 <p class="lead">Affichage de tous vos articles et leurs catégories</p>
             </div>
             <div class="col-lg-6 text-left">
-               
+               {% for item in afficheArticles %}
+                   <h3>{{ item.jillianarticletitre }}</h3>
+                   
+                   {# si on a une catégorie #}
+                   {% if item.idjilliancateg is not empty %}
+                   
+                   {# création de tableaux via la commande split #}    
+                   {% set idcategtab = item.idjilliancateg|split(',') %}    
+                   {% set nomcategtab = item.jilliancategnom|split('|||') %}    
+                       <h5>Rubriques : 
+                           {% for id in idcategtab %}
+   <a href ="?idcateg={{ id }}">{{ nomcategtab[loop.index0] }}</a>  
+    {% if not loop.last %} |
+        {% endif %}
+                           {% endfor %}
+                           </h5>
+                   {% endif %}
+                   <p>{{ item.jillianarticletxt }} ... <a href='?idarticle={{ item.idjillianarticle }}'>Lire la suite</a></p>
+                   <p>Date: {{ item.jillianarticletemps }}</p>
+               {% else %}
+               <h3>Pas encore d'articles</h3>
+               {% endfor %}
             </div>
         </div>
 </main>

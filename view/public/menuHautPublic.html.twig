@@ -5,5 +5,8 @@
         </a>
     </li>
     {# ici vous devez afficher vos catégories clicables entre <li> #}
+    {% for categ in afficheMenu %}
+    <li class="nav-item"><a class="nav-link" href="?idcateg={{ categ.idjilliancateg }}">{{ categ.jilliancategnom }}</a></li>     
+    {% endfor %}
     <li class="nav-item"><a class="nav-link" href="?disconnect">Déconnexion</a></li>
 </ul>
