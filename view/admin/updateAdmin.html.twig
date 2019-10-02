@@ -32,12 +32,17 @@
     <input name='idjillianarticle' type='hidden' value='{{ article.idjillianarticle }}'>
   </div>
   
-  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+ 
+      {% for cat in categ %} <div class="form-check">
+  <input name='idjilliancateg[]' class="form-check-input" type="checkbox" value="{{ cat.idjilliancateg }}" id="defaultCheck1">
   <label class="form-check-label" for="defaultCheck1">
-    Default checkbox
+    {{ cat.jilliancategnom }}
   </label>
-</div>
+  </div>
+  {% else %}
+      <h3>Pas de Catégories!</h3>
+      {% endfor %}
+      <br>
 <button type="submit" class="btn btn-primary">Modifier</button>
 </form>
                

@@ -12,9 +12,14 @@ if(isset($_GET['disconnect'])){
     // on récupère l'article (et ses rubriques si il y en a) via son id
     $recup = $jillianarticleM->selectjillianarticleById($_GET['update']);
     
+    // on récupère les rubriques
+    $recupCateg = $jilliancategM->selectAllJilliancateg();
+    
     if(empty($_POST)){
+        
         // affichage formulaire
-        echo $twig->render("admin/updateAdmin.html.twig",["article"=>$recup]);
+        echo $twig->render("admin/updateAdmin.html.twig",["article"=>$recup,"categ"=>$recupCateg]);
+        
     }else{
         echo "<pre>";
         var_dump($_POST);
