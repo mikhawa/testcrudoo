@@ -17,7 +17,7 @@
             <div class="col-lg-10 text-left">
                {# CRUD complet des articles#}
                {% for article in allArticles %}
-                   <h4>{{ article.jillianarticletitre }} | <a href="?update={{ article.idjillianarticle }}">Modifier</a> | <a href="?delete={{ article.idjillianarticle }}">supprimer</a></h4>            
+                   <h4>{{ article.jillianarticletitre }} | <a href="?update={{ article.idjillianarticle }}">Modifier</a> | <a href="?delete={{ article.idjillianarticle }}">Supprimer</a></h4> <hr>           
                    {% else %}
                        <h3>Pas encore d'article</h3>                     
                 {% endfor %}

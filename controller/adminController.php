@@ -9,7 +9,8 @@ if(isset($_GET['disconnect'])){
     
 }elseif(isset($_GET['update'])&& ctype_digit($_GET['update'])){
 
-    echo $_GET['update'];
+    // on récupère l'article (et ses rubriques si il y en a) via son id
+    $recup = $jillianarticleM->selectjillianarticleById($_GET['update']);
     
 /*
  * Accueil de l'admin
