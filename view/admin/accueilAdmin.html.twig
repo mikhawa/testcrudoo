@@ -14,10 +14,10 @@
                 <h1 class="mt-5">Administration</h1>
                 <p class="lead">Administration des articles de TestCrudOO</p>
             </div>
-            <div class="col-lg-6 text-left">
+            <div class="col-lg-10 text-left">
                {# CRUD complet des articles#}
                {% for article in allArticles %}
-                   T 
+                   <h4>{{ article.jillianarticletitre }} | <a href="?update={{ article.idjillianarticle }}">Modifier</a> | <a href="?delete={{ article.idjillianarticle }}">supprimer</a></h4>            
                    {% else %}
                        <h3>Pas encore d'article</h3>                     
                 {% endfor %}

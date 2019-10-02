@@ -5,6 +5,11 @@
 if(isset($_GET['disconnect'])){
     
     $theuserM->disconnectTheuser();
+   
+    
+}elseif(isset($_GET['update'])&& ctype_digit($_GET['update'])){
+
+    echo $_GET['update'];
     
 /*
  * Accueil de l'admin
