@@ -14,6 +14,10 @@ class jillianarticleManager {
     }
     
     /*
+     * PUBLIC
+     */
+    
+    /*
      * On sélectionne tous les articles par date desc avec les catégories si il y en a.
      */
     public function selectAlljillianarticle() {
@@ -78,7 +82,47 @@ class jillianarticleManager {
     }
     
     
-/*
+    
+    /*
+     * 
+     * ADMIN
+     * 
+     */
+    
+    /*
+     * On sélectionne tous les articles par date desc pour l'admin
+     */
+    public function selectAdminjillianarticle() {
+        $sql = "SELECT a.idjillianarticle, a.jillianarticletitre
+                    FROM jillianarticle a
+                    ORDER BY a.jillianarticletemps DESC;    
+            ";
+        try{
+            $recup = $this->db->query($sql);
+            
+            // si pas de résultats
+            if($recup->rowCount()==0){
+                return [];
+            }
+            
+            return $recup->fetchAll(PDO::FETCH_ASSOC);
+            
+            
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+            return [];        
+        }
+        
+    }
+    
+    /*
+     * 
+     * ADMIN ET PUBLIC
+     * 
+     * 
+     */
+    
+    /*
 * On sélectionne un article via son id avec les catégories si il y en a.
 */
     public function selectjillianarticleById(int $idarticle) {
@@ -110,6 +154,6 @@ class jillianarticleManager {
             return [];        
         }
         
-    }    
+    } 
 
 }
