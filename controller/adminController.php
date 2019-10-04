@@ -15,15 +15,22 @@ if(isset($_GET['disconnect'])){
     // on récupère les rubriques
     $recupCateg = $jilliancategM->selectAllJilliancateg();
     
+    // le formulaire n'a pas été envoyé
     if(empty($_POST)){
         
         // affichage formulaire
         echo $twig->render("admin/updateAdmin.html.twig",["article"=>$recup,"categ"=>$recupCateg]);
-        
+     
+    // le formulaire a été envoyé donc mise à jour.   
     }else{
+        
+        // grace au formulaire envoyé, on crée une instance de jillianarticle
+        $articlePourUpdate = new jillianarticle($_POST);
+        
         echo "<pre>";
-        var_dump($_POST);
+        var_dump($_POST,$articlePourUpdate);
         echo "</pre>";
+        
     }
     
 /*

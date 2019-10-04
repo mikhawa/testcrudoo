@@ -117,6 +117,15 @@ class jillianarticleManager {
     
     /*
      * 
+     * On UPDATE l'article, on supprime puis on ajoute le(s) lien(s) entre l'article et les catégories (jilliancateg_has_jillianarticle)
+     * On besoin comme paramètre d'une instance de jillianarticle et d'un tableau contenant le(s) id(s) des catégories que lm'on souhaite insérer dans le many2many (envoyée depuis le formulaire d'update)
+     */
+    public function updateArticleAndCateg(jillianarticle $article, array $idcateg): bool{
+        
+    }
+    
+    /*
+     * 
      * ADMIN ET PUBLIC
      * 
      * 
