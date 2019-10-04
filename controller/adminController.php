@@ -27,11 +27,24 @@ if(isset($_GET['disconnect'])){
         // grace au formulaire envoyé, on crée une instance de jillianarticle
         $articlePourUpdate = new jillianarticle($_POST);
         
-        
+        /* utilisation de kint pour le débugage amélioré
         s($_POST,$articlePourUpdate);
         d($_POST,$articlePourUpdate);
+        */
         
+        /* on va vérifier si on a coché au moins une catégorie
+         * avec un if else, quand il s'agit de remplir une variable, le ternaire est souvant préféré
+         
+        if(isset($_POST['idjilliancateg'])){
+            $idcateg = $_POST['idjilliancateg'];
+        }else{
+            $idcateg = [];
+        }
+        */
+        // on va vérifier si on a coché au moins une catégorie en ternaire (condition)? vrai : faux 
+        $idcateg = (isset($_POST['idjilliancateg']))? $_POST['idjilliancateg']: [];
         
+        $update = $jilliancategM->updateArticleAndCateg($articlePourUpdate,$idcateg);
     }
     
 /*
