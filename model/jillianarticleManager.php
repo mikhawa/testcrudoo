@@ -134,11 +134,38 @@ class jillianarticleManager {
         $update->bindValue("texte", $article->getJillianarticletxt(),PDO::PARAM_STR);
         $update->bindValue("temps", $article->getJillianarticletemps(),PDO::PARAM_STR);
         
+        
         try{
+            // si ça fonctionne, on ne renvoie pas encore true car le return arrêterait le script ici
             $update->execute();
+        } catch (PDOException $ex) {
+            // en cas d'erreur on affiche un message d'erreur et on arrête le script avec return false;
+            echo $ex->getMessage();
+            return false;
+        }
+        
+        // quoiqu'il arrive, on va supprimer toutes les entrées dans la table de jointure (pas de cases cochées ou cases décochées) en lien avec l'article que l'on modifie
+        
+        $sql = "DELETE FROM jilliancateg_has_jillianarticle WHERE jillianarticle_idjillianarticle = ?"; 
+        $delete = $this->db->prepare($sql);
+        $delete->bindValue(1, $article->getIdjillianarticle(),PDO::PARAM_INT);
+        
+        try{
+            $delete->execute();
         } catch (PDOException $ex) {
             echo $ex->getMessage();
             return false;
+        }
+        
+        // si on a choisi des catégories, le tableau $idcateg n'est pas vide
+        if(!empty($idcateg)){
+           
+            $sql = "INSERT INTO jilliancateg_has_jillianarticle (jilliancateg_idjilliancateg,jillianarticle_idjillianarticle) VALUES (?,?)";
+            
+        // pas de catégories    
+        }else{
+            // on est arrivé jusqu'ici et on ne doit rien insérer, on peut donc renvoyer true
+            return true;
         }
         
     }
