@@ -32,28 +32,39 @@
     <input name='idjillianarticle' type='hidden' value='{{ article.idjillianarticle }}'>
   </div>
   
- 
+      {# on fait une boucle tant qu'on a des catégories #}
       {% for cat in categ %} 
+          
+          {# on crée une variable avec set dans laquelle 
+          on met un tableau grâce aux catégories de l'articles coupé avec la virgule (voir le GROUP_CONCAT de la requête de récupration d'article par id)
+          #}
           {% set tabId = article.idjilliancateg|split(",") %}
+          
+          {# si la variable idjilliancateg de la boucle sur la catégorie se trouve dans (in_array) le tableau des idjilliancateg venant de l'article #}
           {% if cat.idjilliancateg in tabId %}
+              
+                {# on crée value et on la remplit avec "checked" #}
                 {% set value = "checked" %}
             {% else %}
+                
+                {# on crée value et on la remplit avec du vide #}
                 {% set value = "" %}
             {% endif %}
           <div class="form-check">
+              {# on "checked" grâce à la variable value les rubriques dans lequel se trouve déjà l'article #} 
   <input name='idjilliancateg[]' class="form-check-input" type="checkbox" value="{{ cat.idjilliancateg }}" id="defaultCheck1" {{ value }}>
+  
   <label class="form-check-label" for="defaultCheck1">
     {{ cat.jilliancategnom }}
   </label>
   </div>
+  {# si la boucle est vide, le else entre for et endfor permet l'affichage d'un message ou autre #}
   {% else %}
       <h3>Pas de Catégories!</h3>
       {% endfor %}
       <br>
 <button type="submit" class="btn btn-primary">Modifier</button>
 </form>
-               
-               
                
             </div>
         </div>
