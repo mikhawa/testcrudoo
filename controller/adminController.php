@@ -15,15 +15,40 @@ if(isset($_GET['disconnect'])){
     // on récupère les rubriques
     $recupCateg = $jilliancategM->selectAllJilliancateg();
     
+    // le formulaire n'a pas été envoyé
     if(empty($_POST)){
         
         // affichage formulaire
         echo $twig->render("admin/updateAdmin.html.twig",["article"=>$recup,"categ"=>$recupCateg]);
-        
+     
+    // le formulaire a été envoyé donc mise à jour.   
     }else{
-        echo "<pre>";
-        var_dump($_POST);
-        echo "</pre>";
+        
+        // grace au formulaire envoyé, on crée une instance de jillianarticle
+        $articlePourUpdate = new jillianarticle($_POST);
+        
+        /* utilisation de kint pour le débugage amélioré
+        s($_POST,$articlePourUpdate);
+        d($_POST,$articlePourUpdate);
+        */
+        
+        /* on va vérifier si on a coché au moins une catégorie
+         * avec un if else, quand il s'agit de remplir une variable, le ternaire est souvant préféré
+         
+        if(isset($_POST['idjilliancateg'])){
+            $idcateg = $_POST['idjilliancateg'];
+        }else{
+            $idcateg = [];
+        }
+        */
+        // on va vérifier si on a coché au moins une catégorie en ternaire (condition)? vrai : faux 
+        $idcateg = (isset($_POST['idjilliancateg']))? $_POST['idjilliancateg']: [];
+        
+        $update = $jillianarticleM->updateArticleAndCateg($articlePourUpdate,$idcateg);
+        
+        if($update){
+            header("Location: ./");
+        }
     }
     
 /*
