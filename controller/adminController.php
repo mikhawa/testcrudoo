@@ -45,6 +45,10 @@ if(isset($_GET['disconnect'])){
         $idcateg = (isset($_POST['idjilliancateg']))? $_POST['idjilliancateg']: [];
         
         $update = $jillianarticleM->updateArticleAndCateg($articlePourUpdate,$idcateg);
+        
+        if($update){
+            header("Location: ./");
+        }
     }
     
 /*

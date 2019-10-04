@@ -160,7 +160,29 @@ class jillianarticleManager {
         // si on a choisi des catégories, le tableau $idcateg n'est pas vide
         if(!empty($idcateg)){
            
-            $sql = "INSERT INTO jilliancateg_has_jillianarticle (jilliancateg_idjilliancateg,jillianarticle_idjillianarticle) VALUES (?,?)";
+            $sql = "INSERT INTO jilliancateg_has_jillianarticle (jilliancateg_idjilliancateg,jillianarticle_idjillianarticle) VALUES ";
+            
+            // tant qu'on a des catégories
+            foreach($idcateg AS $id){
+                // transformation en entier pour éviter les attaques
+                $id = (int) $id;
+                
+                // concaténation de la requête
+                $sql .= "($id,{$article->getIdjillianarticle()}),";
+                
+            }
+            
+            // on retire la ", " de la fin de $sql
+            $sql = substr($sql, 0,-1);
+            //s($sql);
+            
+            try{
+                $this->db->exec($sql);
+                return true;
+            } catch (PDOException $ex) {
+                echo $ex->getMessage();
+                return false;
+            }
             
         // pas de catégories    
         }else{
