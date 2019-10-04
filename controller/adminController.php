@@ -27,9 +27,10 @@ if(isset($_GET['disconnect'])){
         // grace au formulaire envoyé, on crée une instance de jillianarticle
         $articlePourUpdate = new jillianarticle($_POST);
         
-        echo "<pre>";
-        var_dump($_POST,$articlePourUpdate);
-        echo "</pre>";
+        
+        s($_POST,$articlePourUpdate);
+        d($_POST,$articlePourUpdate);
+        
         
     }
     
