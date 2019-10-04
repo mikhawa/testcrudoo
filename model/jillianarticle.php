@@ -35,11 +35,11 @@ class jillianarticle {
         }
 
         public function getJillianarticletitre() {
-            return $this->jillianarticletitre;
+            return html_entity_decode($this->jillianarticletitre,ENT_QUOTES);
         }
 
         public function getJillianarticletxt() {
-            return $this->jillianarticletxt;
+            return html_entity_decode($this->jillianarticletxt,ENT_QUOTES);
         }
 
         public function getJillianarticletemps() {

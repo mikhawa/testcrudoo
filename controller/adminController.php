@@ -44,7 +44,7 @@ if(isset($_GET['disconnect'])){
         // on va vérifier si on a coché au moins une catégorie en ternaire (condition)? vrai : faux 
         $idcateg = (isset($_POST['idjilliancateg']))? $_POST['idjilliancateg']: [];
         
-        $update = $jilliancategM->updateArticleAndCateg($articlePourUpdate,$idcateg);
+        $update = $jillianarticleM->updateArticleAndCateg($articlePourUpdate,$idcateg);
     }
     
 /*

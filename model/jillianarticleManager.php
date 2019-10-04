@@ -120,7 +120,26 @@ class jillianarticleManager {
      * On UPDATE l'article, on supprime puis on ajoute le(s) lien(s) entre l'article et les catégories (jilliancateg_has_jillianarticle)
      * On besoin comme paramètre d'une instance de jillianarticle et d'un tableau contenant le(s) id(s) des catégories que lm'on souhaite insérer dans le many2many (envoyée depuis le formulaire d'update)
      */
-    public function updateArticleAndCateg(jillianarticle $article, array $idcateg): bool{
+    public function updateArticleAndCateg(jillianarticle $article, array $idcateg){
+        
+        // update préparé de l'article
+        $sql = "UPDATE jillianarticle 
+            SET jillianarticletitre = :titre,
+                jillianarticletxt = :texte,
+                jillianarticletemps = :temps
+            WHERE idjillianarticle = :idarticle;";
+        $update = $this->db->prepare($sql);
+        $update->bindValue("idarticle", $article->getIdjillianarticle(),PDO::PARAM_INT);
+        $update->bindValue("titre", $article->getJillianarticletitre(),PDO::PARAM_STR);
+        $update->bindValue("texte", $article->getJillianarticletxt(),PDO::PARAM_STR);
+        $update->bindValue("temps", $article->getJillianarticletemps(),PDO::PARAM_STR);
+        
+        try{
+            $update->execute();
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+            return false;
+        }
         
     }
     
