@@ -84,6 +84,17 @@ class jillianarticleManager {
      * ADMIN
      * 
      */
+    
+    
+    
+    /*
+     * 
+     * Insertion d'un nouvel article avec ses catégories si il en a
+     * 
+     */
+    public function insertArticleAndCateg(jillianarticle $article,array $idcateg){
+        
+    }
 
     /*
      * On sélectionne tous les articles par date desc pour l'admin

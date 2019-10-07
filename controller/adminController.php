@@ -27,10 +27,11 @@ if(isset($_GET['disconnect'])){
         // grace au formulaire envoyé, on crée une instance de jillianarticle
         $articlePourInsert = new jillianarticle($_POST);
         
-        /* utilisation de kint pour le débugage amélioré */
+        /* utilisation de kint pour le débugage amélioré
         s($_POST,$articlePourInsert);
         d($_POST,$articlePourInsert);
-        /**/
+        */
+        
         
     }
 
