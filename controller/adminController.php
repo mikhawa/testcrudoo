@@ -89,6 +89,19 @@ if(isset($_GET['disconnect'])){
         }
     }
     
+    
+/*
+ * DELETE d'un article suivant son id
+ */      
+}elseif (isset($_GET['delete'])&& ctype_digit($_GET['delete'])) {
+    
+    // on a confirmé la suppression
+    if(isset($_GET['ok'])){
+        
+    }else{
+        $recup = $jillianarticleM->selectjillianarticleById($_GET['delete']);
+        echo $twig->render("admin/deleteAdmin.html.twig",["article"=>$recup]);
+    }
 /*
  * Accueil de l'admin
  */    
