@@ -92,7 +92,22 @@ class jillianarticleManager {
      * Insertion d'un nouvel article avec ses catégories si il en a
      * 
      */
-    public function insertArticleAndCateg(jillianarticle $article,array $idcateg){
+    public function insertArticleAndCateg(jillianarticle $article,array $idcateg = []){
+        
+        $sql = "INSERT INTO jillianarticle (jillianarticletitre, jillianarticletxt, jillianarticletemps) VALUES (?,?,?);";
+        
+        $insert = $this->db->prepare($sql);
+        $insert->bindValue(1, $article->getJillianarticletitre(),PDO::PARAM_INT);
+        $insert->bindValue(2, $article->getJillianarticletxt(),PDO::PARAM_STR);
+        $insert->bindValue(3, $article->getJillianarticletemps(),PDO::PARAM_STR);
+        
+        try{
+            $insert->execute();
+        }catch(PDOException $ex){
+            echo $ex->getMessage();
+            return false;
+        }
+        
         
     }
 
