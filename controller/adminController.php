@@ -20,8 +20,17 @@ if(isset($_GET['disconnect'])){
     
         // on appel la vue        
         echo $twig->render("admin/insertAdmin.html.twig",["categ"=>$recupCateg]);
-        
+    
+    // Envoi du formulaire    
     }else{
+        
+        // grace au formulaire envoyé, on crée une instance de jillianarticle
+        $articlePourInsert = new jillianarticle($_POST);
+        
+        /* utilisation de kint pour le débugage amélioré */
+        s($_POST,$articlePourInsert);
+        d($_POST,$articlePourInsert);
+        /**/
         
     }
 
