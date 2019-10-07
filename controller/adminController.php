@@ -5,8 +5,30 @@
 if(isset($_GET['disconnect'])){
     
     $theuserM->disconnectTheuser();
-   
+
     
+/*
+ * INSERT un article
+ */    
+}elseif(isset($_GET['addarticle'])){
+
+    // si on a pas cliqué sur envoyer
+    if(empty($_POST)){
+        
+        // on récupère les rubriques
+        $recupCateg = $jilliancategM->selectAllJilliancateg();
+    
+        // on appel la vue        
+        echo $twig->render("admin/insertAdmin.html.twig",["categ"=>$recupCateg]);
+        
+    }else{
+        
+    }
+
+    
+/*
+ * UPDATE
+ */    
 }elseif(isset($_GET['update'])&& ctype_digit($_GET['update'])){
 
     // on récupère l'article (et ses rubriques si il y en a) via son id
