@@ -94,10 +94,12 @@ class jillianarticleManager {
      */
     public function insertArticleAndCateg(jillianarticle $article,array $idcateg = []){
         
+        // insertion de l'article
+        
         $sql = "INSERT INTO jillianarticle (jillianarticletitre, jillianarticletxt, jillianarticletemps) VALUES (?,?,?);";
         
         $insert = $this->db->prepare($sql);
-        $insert->bindValue(1, $article->getJillianarticletitre(),PDO::PARAM_INT);
+        $insert->bindValue(1, $article->getJillianarticletitre(),PDO::PARAM_STR);
         $insert->bindValue(2, $article->getJillianarticletxt(),PDO::PARAM_STR);
         $insert->bindValue(3, $article->getJillianarticletemps(),PDO::PARAM_STR);
         
@@ -108,6 +110,32 @@ class jillianarticleManager {
             return false;
         }
         
+        // insertion des rubriques si il y en a      
+        if(!empty($idcateg)){
+            
+            // on récupère l'id de l'article qu'on vient d'insérer
+            $idarticle = $this->db->lastInsertId();
+            $sql = "INSERT INTO jilliancateg_has_jillianarticle (jilliancateg_idjilliancateg,jillianarticle_idjillianarticle) VALUES ";
+            
+            // tant qu'on a des catégories cochées
+            foreach($idcateg AS $idcat){
+                $idcat = (int) $idcat;
+                $sql .= "($idcat,$idarticle),";
+            }
+            // on retire la dernière virgule
+            $sql = substr($sql, 0,-1);
+            
+            try{
+                $this->db->exec($sql);
+                return true;
+            } catch (PDOException $ex) {
+                echo $ex->getMessage();
+                return false;
+            }
+            
+        }else{
+            return true;
+        }
         
     }
 

@@ -27,6 +27,12 @@ if(isset($_GET['disconnect'])){
         // grace au formulaire envoyé, on crée une instance de jillianarticle
         $articlePourInsert = new jillianarticle($_POST);
         
+        // si on a coché au moins une catégorie
+        $categ=(isset($_POST['idjilliancateg']))? $_POST['idjilliancateg']: [];
+        
+        // appel de la méthode permettant d'insérer un article
+        $insert = $jillianarticleM->insertArticleAndCateg($articlePourInsert,$categ);
+        
         /* utilisation de kint pour le débugage amélioré
         s($_POST,$articlePourInsert);
         d($_POST,$articlePourInsert);
