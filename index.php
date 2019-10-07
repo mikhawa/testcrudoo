@@ -21,6 +21,9 @@ $twig->addExtension(new Twig_Extensions_Extension_Text());
 // twig extension for debug
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
+// Initialisation de KINT pour twig
+$twig->addExtension(new Kint\Twig\TwigExtension());
+
 
 /*
  * create class autoload - find class into model's folder

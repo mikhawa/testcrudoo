@@ -1,0 +1,47 @@
+{% extends "template1.html.twig" %}
+
+{% block title %}{{ parent() }} | Suppression de l'article : {{ article.jillianarticletitre }} {% endblock %}
+
+{% block menuhaut %}
+{% include "admin/menuHautAdmin.html.twig" %}
+{% endblock %}
+
+{% block milieu %}
+    <!-- Page Content -->
+<main role="main" class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="mt-5">Suppression de l'article : {{ article.jillianarticletitre }}</h1>
+                <p class="lead">Voulez-vous vraiment supprimer cet article?</p>
+            </div>
+            <div class="col-lg-10 text-left">
+                {# dump de kint au format barre de débogage #}
+               {{ d(article) }}
+               
+               <h2>{{ article.jillianarticletitre }}</h2>
+               <p>Presént dans les rubriques: 
+
+          {% set tabId = article.jilliancategnom|split("|||") %}
+          {# s(tabId[0]) #}
+          {% if tabId[0]  %} 
+            {% for categ in tabId %}
+          
+             {{ categ }} |
+
+            {% endfor %}
+          {% else %}
+              Article présent dans aucune catégorie
+          {% endif %}
+      </p>
+      <a href='?delete={{ article.idjillianarticle }}&ok'>OK</a> 
+      <a href='./'>Annuler</a> 
+               
+            </div>
+        </div>
+</main>
+
+{% endblock %}
+
+{% block bas %}
+{% include "footer.html.twig" %}
+{% endblock %}

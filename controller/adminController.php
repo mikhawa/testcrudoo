@@ -5,8 +5,46 @@
 if(isset($_GET['disconnect'])){
     
     $theuserM->disconnectTheuser();
-   
+
     
+/*
+ * INSERT un article
+ */    
+}elseif(isset($_GET['addarticle'])){
+
+    // si on a pas cliqué sur envoyer
+    if(empty($_POST)){
+        
+        // on récupère les rubriques
+        $recupCateg = $jilliancategM->selectAllJilliancateg();
+    
+        // on appel la vue        
+        echo $twig->render("admin/insertAdmin.html.twig",["categ"=>$recupCateg]);
+    
+    // Envoi du formulaire    
+    }else{
+        
+        // grace au formulaire envoyé, on crée une instance de jillianarticle
+        $articlePourInsert = new jillianarticle($_POST);
+        
+        // si on a coché au moins une catégorie
+        $categ=(isset($_POST['idjilliancateg']))? $_POST['idjilliancateg']: [];
+        
+        // appel de la méthode permettant d'insérer un article
+        $insert = $jillianarticleM->insertArticleAndCateg($articlePourInsert,$categ);
+        
+        /* utilisation de kint pour le débugage amélioré
+        s($_POST,$articlePourInsert);
+        d($_POST,$articlePourInsert);
+        */
+        
+        
+    }
+
+    
+/*
+ * UPDATE
+ */    
 }elseif(isset($_GET['update'])&& ctype_digit($_GET['update'])){
 
     // on récupère l'article (et ses rubriques si il y en a) via son id
@@ -51,6 +89,24 @@ if(isset($_GET['disconnect'])){
         }
     }
     
+    
+/*
+ * DELETE d'un article suivant son id
+ */      
+}elseif (isset($_GET['delete'])&& ctype_digit($_GET['delete'])) {
+    
+    // on a confirmé la suppression
+    if(isset($_GET['ok'])){
+        
+        $delete = $jillianarticleM->deletejillianarticleById($_GET['delete']);
+        if($delete){
+            header("Location: ./");
+        }
+        
+    }else{
+        $recup = $jillianarticleM->selectjillianarticleById($_GET['delete']);
+        echo $twig->render("admin/deleteAdmin.html.twig",["article"=>$recup]);
+    }
 /*
  * Accueil de l'admin
  */    
