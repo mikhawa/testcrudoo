@@ -98,6 +98,11 @@ if(isset($_GET['disconnect'])){
     // on a confirmé la suppression
     if(isset($_GET['ok'])){
         
+        $delete = $jillianarticleM->deletejillianarticleById($_GET['delete']);
+        if($delete){
+            header("Location: ./");
+        }
+        
     }else{
         $recup = $jillianarticleM->selectjillianarticleById($_GET['delete']);
         echo $twig->render("admin/deleteAdmin.html.twig",["article"=>$recup]);

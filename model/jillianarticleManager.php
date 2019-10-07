@@ -231,6 +231,21 @@ class jillianarticleManager {
             return false;
         }
     }
+    
+/*
+ * DELETE un article par son id
+ */    
+    public function deletejillianarticleById(int $idarticle){
+        $sql ="DELETE FROM jillianarticle WHERE idjillianarticle=?";
+        $delete = $this->db->prepare($sql);
+        try{
+            $delete->execute([$idarticle]);
+            return true;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+            return false;
+        }
+    }
 
     /*
      * 
